@@ -7,8 +7,8 @@ return (
     <header className={styles.navigation}>
         <ul className={styles.ul}>
             <Link href="/" title="Home"/>
-            <Link href="/" title="Offers"/>
-            <Link href="/" title="Pharmacies"/>
+            <Link href="/offers" title="Offers"/>
+            <Link href="/pharmacies" title="Pharmacies"/>
         </ul>
     </header>
 )
