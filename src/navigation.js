@@ -4,6 +4,7 @@ import App from './App';
 import OfferPage from './components/offer';
 import Header from './components/header';
 import Footer from './components/footer';
+
 const Navigation = () => {
 return(
     <Fragment>
@@ -12,7 +13,7 @@ return(
         <Route path="/" exact component={App}/>
         <Route path="/offers" component={OfferPage}/>
     </Router>
-    <Footer></Footer>
+    <Footer/>
     </Fragment>
 )
 }
