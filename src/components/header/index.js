@@ -9,6 +9,8 @@ return (
             <Link href="/" title="Home"/>
             <Link href="/offers" title="Offers"/>
             <Link href="/pharmacies" title="Pharmacies"/>
+            <Link href="/login" title="Login"/>
+            <Link href="/register" title="Register"/>
         </ul>
     </header>
 )
