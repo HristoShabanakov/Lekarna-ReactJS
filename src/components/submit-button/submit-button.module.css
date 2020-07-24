@@ -1,0 +1,21 @@
+.button {
+    background-color: teal;
+    color: white;
+    padding:  1%;
+    width: 8%;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+    border: none;
+    margin-top: 0.5%;
+    border: 3px solid white;
+    margin-bottom:2%;
+
+}
+
+.button:hover {
+    background-color: white;
+    border:  2px solid;
+    color: green;
+    font-style: oblique;
+}

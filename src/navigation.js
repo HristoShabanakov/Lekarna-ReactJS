@@ -1,21 +1,25 @@
 import React, { Fragment } from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-import App from './App';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import HomePage from './pages/home';
 import OfferPage from './components/offer';
 import Header from './components/header';
 import Footer from './components/footer';
 import RegisterPage from './pages/register';
 import LoginPage from './pages/login';
+import PharmacyPage from './pages/pharmacies';
 
 const Navigation = () => {
 return(
     <Fragment>
     <Header />
     <Router>
-        <Route path="/" exact component={App}/>
+        <Switch>
+        <Route path="/" exact component={HomePage}/>
         <Route path="/offers" component={OfferPage}/>
+        <Route path="/pharmacies" component={PharmacyPage}/>
         <Route path="/register" component = {RegisterPage}/>
         <Route path="/login" component = {LoginPage}/>
+        </Switch>
     </Router>
     <Footer/>
     </Fragment>
