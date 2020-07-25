@@ -7,9 +7,10 @@ import Footer from './components/footer';
 import RegisterPage from './pages/register';
 import LoginPage from './pages/login';
 import PharmacyPage from './pages/pharmacies';
+import ErrorPage from './pages/error';
 
 const Navigation = () => {
-return(
+return (
     <Fragment>
     <Header />
     <Router>
@@ -19,6 +20,7 @@ return(
         <Route path="/pharmacies" component={PharmacyPage}/>
         <Route path="/register" component = {RegisterPage}/>
         <Route path="/login" component = {LoginPage}/>
+        <Route component = {ErrorPage}/>
         </Switch>
     </Router>
     <Footer/>
