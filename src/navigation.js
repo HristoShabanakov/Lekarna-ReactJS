@@ -18,9 +18,9 @@ return (
         <Route path="/" exact component={HomePage}/>
         <Route path="/offers" component={OfferPage}/>
         <Route path="/pharmacies" component={PharmacyPage}/>
-        <Route path="/register" component = {RegisterPage}/>
-        <Route path="/login" component = {LoginPage}/>
-        <Route component = {ErrorPage}/>
+        <Route path="/register" component ={RegisterPage}/>
+        <Route path="/login" component ={LoginPage}/>
+        <Route component ={ErrorPage}/>
         </Switch>
     </Router>
     <Footer/>

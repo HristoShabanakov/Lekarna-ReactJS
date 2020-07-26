@@ -9,43 +9,77 @@ class LoginPage extends Component {
         super(props)
 
         this.state = {
-            email: "",
+            username: "",
             password: "",
         }
     }
 
-    onChange = (event, type) => {
+    handleChange = (event, type) => {
         const newState = {}
         
         newState[type] = event.target.value
         this.setState(newState)
         }
 
+    handleSubmit = async (event) => {
+        event.preventDefault()
+        const {
+            username,
+            password
+        } = this.state;
+        try {
+       const promise = await fetch('http//localhost:44509/api/user/login', {
+            method: 'POST',
+            body: JSON.stringify({
+              username,  
+              password
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+    });
+    
+    const authToken = promise.headers.get('Authorization');
+    document.cookie = `x-auth-token'=${authToken}`
+
+    const response = await promise.json();
+    
+    if (response.username && authToken) {
+        this.props.history.push('/');
+    }
+
+    } catch(e) {
+        console.log(e);
+        
+    }
+}
+
     render() {
         const {
-            email,
+            email: username,
             password,
           } = this.state
         
      return (
-        <div className={styles.container}>
+        <form className={styles.container} onSubmit={this.handleSubmit}>
         <Title title="Login Page" />
         <Input 
-        value={email}
-        onChange={(e) => this.onChange(e, 'email')}
-        label="Email"
-        id="email"
+        value={username}
+        onChange={(e) => this.handleChange(e, 'username')}
+        label="Username"
+        id="username"
         />
         <Input 
+        type="password"
         value={password}
-        onChange={(e) => this.onChange(e, 'password')}
+        onChange={(e) => this.handleChange(e, 'password')}
         label="Password"
         id="password"
         />
         <div>
         <SubmitButton title="Login"/>
         </div>
-    </div>
+    </form>
     )
     }
 }

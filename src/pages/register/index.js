@@ -24,27 +24,29 @@ class RegisterPage extends Component {
 
     render() {
         const {
-            email,
+            email: username,
             password,
             rePassword
           } = this.state
         
      return (
-        <div className={styles.container}>
+        <form className={styles.container}>
         <Title title="Register Page" />
         <Input 
-        value={email}
-        onChange={(e) => this.onChange(e, 'email')}
-        label="Email"
-        id="email"
+        value={username}
+        onChange={(e) => this.onChange(e, 'username')}
+        label="Username"
+        id="username"
         />
         <Input 
+        type="password"
         value={password}
         onChange={(e) => this.onChange(e, 'password')}
         label="Password"
         id="password"
         />
-        <Input 
+        <Input
+        type="password"
         value={rePassword}
         onChange={(e) => this.onChange(e, 'rePassword')}
         label="Re-Password"
@@ -53,7 +55,7 @@ class RegisterPage extends Component {
         <div>
         <SubmitButton title="Login"/>
         </div>
-    </div>
+    </form>
     )
     }
 }
