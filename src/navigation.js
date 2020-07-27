@@ -12,8 +12,8 @@ import ErrorPage from './pages/error';
 const Navigation = () => {
 return (
     <Fragment>
-    <Header />
     <Router>
+    <Header />
         <Switch>
         <Route path="/" exact component={HomePage}/>
         <Route path="/offers" component={OfferPage}/>
