@@ -1,15 +1,26 @@
 .navigation {
-    padding: 5px;
     color: aqua;
     width: 100%;
     background: greenyellow;
     list-style-type: none;
     margin: 0 auto;
+    height: 100px;
+    padding: 0 !important;
 }
 
 .logo {
     width: 60px;
     margin: 20px;
+    position: absolute;
   }
+
+.ul {
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 32px;
+    text-transform: uppercase;
+}
+
+
 
 

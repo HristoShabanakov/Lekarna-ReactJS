@@ -2,7 +2,6 @@ import React from 'react';
 import LinkComponent from '../link';
 import styles from './index.module.css';
 import logo from '../../images/lekarna.png'
-import { BrowserRouter as Router} from 'react-router-dom';
 
 const Header = () => {
 return (
