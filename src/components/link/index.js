@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 const LinkComponent = ({title, href}) => {
 return (
     <li className={styles.link}>
-        <Link to={href}>
+        <Link className={styles.li} to={href}>
             {title}
         </Link>
     </li>
