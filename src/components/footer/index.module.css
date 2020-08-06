@@ -3,6 +3,11 @@
     height: 20vh;
     background-color: steelblue;
     text-align: center;
+
+    width: 100%;
+    background: #4682b4;
+    position: absolute;
+    bottom: 0;
 }
 
 .p {

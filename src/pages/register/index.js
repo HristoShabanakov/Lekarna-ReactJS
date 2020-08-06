@@ -9,9 +9,9 @@ class RegisterPage extends Component {
         super(props)
 
         this.state = {
+            username: "",
             email: "",
-            password: "",
-            rePassword: ""
+            password: ""
         }
     }
 
@@ -22,15 +22,56 @@ class RegisterPage extends Component {
         this.setState(newState)
         }
 
+        handleSubmit = async (event) => {
+            event.preventDefault()
+            const {
+                username,
+                email,
+                password
+            } = this.state;
+            try {
+           const promise = await fetch('https://localhost:44305/identity/register', {
+                method: 'POST',
+                body: JSON.stringify({
+                  username,
+                  email,  
+                  password
+                }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                }
+        });
+    
+        
+         const authToken = promise.headers.get('Authorization');
+         console.log(authToken);
+        //document.cookie = `x-auth-token'=${data}`
+    
+        const response = await promise.json();
+        const token = document.cookie = `Lekarna-token'=${response}`
+    
+        console.log(response)
+        
+        if (response.username && authToken) {
+            this.props.history.push('/');
+        }
+    
+        } catch(e) {
+            console.log(e);
+            
+        }
+    }
     render() {
         const {
-            email: username,
-            password,
-            rePassword
+            username,
+            email,
+            password
           } = this.state
         
      return (
-        <form className={styles.container}>
+         <div>
+        <form className={styles.container} onSubmit={this.handleSubmit}>
         <Title title="Register Page" />
         <Input 
         value={username}
@@ -39,23 +80,23 @@ class RegisterPage extends Component {
         id="username"
         />
         <Input 
-        type="password"
-        value={password}
-        onChange={(e) => this.onChange(e, 'password')}
-        label="Password"
-        id="password"
+        value={email}
+        onChange={(e) => this.onChange(e, 'email')}
+        label="Email"
+        id="email"
         />
         <Input
         type="password"
-        value={rePassword}
-        onChange={(e) => this.onChange(e, 'rePassword')}
-        label="Re-Password"
-        id="re-password"
+        value={password}
+        onChange={(e) => this.onChange(e, 'password')}
+        label="password"
+        id="password"
         />
         <div>
         <SubmitButton title="Login"/>
         </div>
     </form>
+    </div>
     )
     }
 }
