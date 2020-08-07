@@ -4,6 +4,7 @@ import SubmitButton from '../../components/submit-button/submit-button';
 import Title from '../../components/title';
 import Input from '../../components/input';
 import authenticate from '../../services/authenticate';
+import UserContext from '../../Context';
 
 class LoginPage extends Component {
     constructor(props) {
@@ -14,6 +15,8 @@ class LoginPage extends Component {
             password: "",
         }
     }
+
+    static contextType = UserContext;
 
     handleChange = (event, type) => {
         const newState = {}
@@ -28,17 +31,21 @@ class LoginPage extends Component {
             username,
             password
         } = this.state;
-      await authenticate('https://localhost:44305/identity/login', {
+
+        console.log(this.context);
+
+    await authenticate('https://localhost:44305/identity/login', {
      username,
      password
- }, () => {
+    }, (user) => {
      console.log('Logged In Completed');
+     this.context.logIn(user);
      this.props.history.push('/');
- })
+     }, (e) => {
+     console.log('Error', e)
     }
-
-        
-
+    )};
+    
 
     render() {
         const {

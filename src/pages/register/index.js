@@ -3,6 +3,8 @@ import styles from './index.module.css';
 import SubmitButton from '../../components/submit-button/submit-button';
 import Title from '../../components/title';
 import Input from '../../components/input';
+import authenticate from '../../services/authenticate';
+import UserContext from '../../Context';
 
 class RegisterPage extends Component {
     constructor(props) {
@@ -14,6 +16,8 @@ class RegisterPage extends Component {
             password: ""
         }
     }
+
+    static contextType = UserContext;
 
     onChange = (event, type) => {
         const newState = {}
@@ -29,38 +33,17 @@ class RegisterPage extends Component {
                 email,
                 password
             } = this.state;
-            try {
-           const promise = await fetch('https://localhost:44305/identity/register', {
-                method: 'POST',
-                body: JSON.stringify({
-                  username,
-                  email,  
-                  password
-                }),
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                }
-        });
-    
-        
-         const authToken = promise.headers.get('Authorization');
-         console.log(authToken);
-        //document.cookie = `x-auth-token'=${data}`
-    
-        const response = await promise.json();
-        const token = document.cookie = `Lekarna-token'=${response}`
-    
-        console.log(response)
-        
-        if (response.username && authToken) {
-            this.props.history.push('/');
-        }
-    
-        } catch(e) {
-            console.log(e);
             
-        }
+           await authenticate('https://localhost:44305/identity/register', {
+               username,
+               email,
+               password
+           }, (user) => {
+               this.context.logIn(user);
+               this.props.history.push('/');
+           }, (e) => {
+               console.log('Error', e)
+           });
     }
     render() {
         const {

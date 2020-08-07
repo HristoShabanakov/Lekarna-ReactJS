@@ -21,14 +21,16 @@ const authenticate = async(url, body, onSuccess, onFailure) => {
      console.log(response);
      
      if (response) {
-         onSuccess();
-     }else{
+         onSuccess({
+             username: response.username,
+             id: response._id
+         });
+     } else{
          onFailure();
      }
  
      } catch(e) {
-         console.log(e);
-         
+         onFailure(e);
      }
 }
 
