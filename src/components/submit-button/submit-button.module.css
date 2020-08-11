@@ -10,6 +10,15 @@
     margin-top: 0.5%;
     border: 3px solid white;
     margin-bottom:2%;
+    background-color: #03bad6;
+    color: #fff;
+    padding: 10px;
+    width: 8%;
+    border-radius: 7px;
+    display: block;
+    border: 3px solid #fff;
+    margin: .5% auto 2%;
+    margin-top: 50px;
 
 }
 
@@ -18,4 +27,6 @@
     border:  2px solid;
     color: green;
     font-style: oblique;
+    background-color: #06a9c2;
+    color: #fff;
 }

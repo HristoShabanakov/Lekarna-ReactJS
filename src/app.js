@@ -19,6 +19,7 @@ class App extends Component {
     }
 
     logOut = () => {
+        document.cookie ='Lekarna-token='
         this.setState({
             loggedIn: false,
             user: null
