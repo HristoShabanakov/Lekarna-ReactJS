@@ -6,14 +6,13 @@ import Title from '../../components/title';
 const HomePage = () => {
   return (
     <div className={styles.container}>
-      <div>
+      <div className={styles.main}>
       <Title title="Main Page" />
       <Main>
         
       </Main>
       </div>
     </div>
-    
   );
 }
 

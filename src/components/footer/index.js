@@ -4,7 +4,7 @@ import styles from './index.module.css';
 const Footer = () => {
     return (
 <footer className={styles.footer}>
-    <div>
+    <div className={styles.container}>
         <h2>This is the Footer</h2>
     </div>
     <p className={styles.p}>Lekarna - Front-End with ReactJS</p>
