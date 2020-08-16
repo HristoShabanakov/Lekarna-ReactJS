@@ -8,6 +8,7 @@ import RegisterPage from './pages/register';
 import LoginPage from './pages/login';
 import PharmacyPage from './pages/pharmacies';
 import ErrorPage from './pages/error';
+import LogoutPage from './pages/logout';
 
 const Navigation = () => {
 return (
@@ -17,10 +18,10 @@ return (
         <Switch>
         <Route path="/" exact component={HomePage}/>
         <Route path="/offers" component={OfferPage}/>
-        <Route path="/murshakis" component={OfferPage}/>
         <Route path="/pharmacies" component={PharmacyPage}/>
         <Route path="/register" component ={RegisterPage}/>
         <Route path="/login" component ={LoginPage}/>
+        <Route path="/logout" component ={LogoutPage}/>
         <Route component ={ErrorPage}/>
         </Switch>
     </Router>

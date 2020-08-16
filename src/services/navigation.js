@@ -13,6 +13,10 @@ const getNavigation = (user) => {
         title: "Pharmacies",
         link: "/pharmacies"
        },
+       {
+         title: "Logout",
+         link: "/logout"
+        },
     ]
 
     const guestLinks = [
