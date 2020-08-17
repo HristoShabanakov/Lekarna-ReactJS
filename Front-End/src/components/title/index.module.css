@@ -1,0 +1,8 @@
+.title {
+    text-align: center;
+    border: tomato;
+    padding: 5px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    color: #02bbd7;
+}

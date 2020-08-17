@@ -1,0 +1,28 @@
+.link {
+    list-style-type: none;
+    margin: 0 auto;
+    display: inline-block;
+    padding: 5px;
+    text-transform: uppercase;
+    padding-right: 20px;
+}
+
+.li{
+	text-transform: uppercase;
+    padding-right: 20px;
+    text-decoration: none;
+    color: #525252;
+    font-weight: 500;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.link a:hover {text-decoration: none;
+    color: #525252;
+    font-weight: 500;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    color: #0bff00;
+}
