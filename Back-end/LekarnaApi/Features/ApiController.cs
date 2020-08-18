@@ -1,4 +1,4 @@
-﻿namespace LekarnaApi.Controllers
+﻿namespace LekarnaApi.Features
 {
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;

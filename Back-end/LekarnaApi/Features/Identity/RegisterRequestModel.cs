@@ -1,4 +1,4 @@
-﻿namespace LekarnaApi.Models
+﻿namespace LekarnaApi.Models.Identity
 {
     using System.ComponentModel.DataAnnotations;
     public class RegisterRequestModel

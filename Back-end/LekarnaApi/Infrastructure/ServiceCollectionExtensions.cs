@@ -1,20 +1,35 @@
 ﻿using LekarnaApi.Data;
 using LekarnaApi.Data.Models;
+using LekarnaApi.Features.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace LekarnaApi.Infrastructure
 {
+
     public static class ServiceCollectionExtensions
     {
+
+        public static AppSettings GetApplicationSettings(this IServiceCollection services, IConfiguration configuration)
+        {
+            var applicationSettingsConfiguration = configuration.GetSection("ApplicationSettings");
+            services.Configure<AppSettings>(applicationSettingsConfiguration);
+
+            return applicationSettingsConfiguration.Get<AppSettings>();
+        }
+
+        public static IServiceCollection AddDatabase(
+            this IServiceCollection services,
+            IConfiguration configuration)
+        => services
+            .AddDbContext<LekarnaDbContext>(options => options
+               .UseSqlServer(configuration.GetDefaultConnectionString()));
+
         public static IServiceCollection AddIdentity(this IServiceCollection services)
         {
             services
@@ -33,7 +48,7 @@ namespace LekarnaApi.Infrastructure
 
         public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, AppSettings appSettings)
         {
-            
+
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 
             services
@@ -57,5 +72,10 @@ namespace LekarnaApi.Infrastructure
 
             return services;
         }
+
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+
+          => services.AddTransient<IIdentityService, IdentityService>();
+
     }
 }

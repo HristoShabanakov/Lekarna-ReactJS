@@ -20,10 +20,10 @@ namespace LekarnaApi
         public void ConfigureServices(IServiceCollection services)
 
             => services
-             .AddDbContext<LekarnaDbContext>(options => options
-               .UseSqlServer(this.Configuration.GetDefaultConnectionString()))
+             .AddDatabase(this.Configuration)
                 .AddIdentity()
                 .AddJwtAuthentication(services.GetApplicationSettings(this.Configuration))
+                .AddApplicationServices()
                 .AddControllers();
 
 
