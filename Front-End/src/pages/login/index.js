@@ -21,7 +21,7 @@ const LoginPage = () => {
      username,
      password
     }, (user) => {
-     console.log('Logged In Completed');        
+     console.log('Logged In Completed');    
      context.logIn(user);
      history.push('/');
      }, (e) => {

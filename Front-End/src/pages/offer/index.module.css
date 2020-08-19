@@ -1,7 +1,11 @@
 .h1 {
     text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    color: #02bbd7;
 }
 
-.container {
+.main{
 
 }
