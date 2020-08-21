@@ -5,7 +5,7 @@
 
     [ApiController]
     [Route("[controller]")]
-    //[Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public abstract class ApiController : ControllerBase
     {
 

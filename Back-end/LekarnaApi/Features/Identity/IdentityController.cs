@@ -7,7 +7,7 @@
     using Microsoft.Extensions.Options;
     using System.Threading.Tasks;
 
-    public class IdentityController : ApiController
+    public class IdentityController : ControllerBase
     {
         private readonly UserManager<User> userManager;
         private readonly IIdentityService identityService;
@@ -22,9 +22,9 @@
             this.identityService = identityService;
             this.appSettings = appSettings.Value;
         }
-
-        [Route(nameof(Register))]
-        public async Task<ActionResult> Register(RegisterRequestModel model)
+        [HttpPost]
+        [Route("/identity/register")]
+        public async Task<ActionResult> Register([FromBody]RegisterRequestModel model)
         {
             var user = new User
             {
@@ -42,8 +42,9 @@
             return this.BadRequest(result.Errors);
         }
 
-        [Route(nameof(Login))]
-        public async Task<ActionResult<LoginResponseModel>> Login(LoginRequestModel model)
+        [HttpPost]
+        [Route("/identity/login")]
+        public async Task<ActionResult<LoginResponseModel>> Login([FromBody]LoginRequestModel model)
         {
             var user = await this.userManager.FindByNameAsync(model.UserName);
             if (user == null)
