@@ -6,7 +6,7 @@ const Input = ({label, id, value, onChange, type}) => {
         <div className={styles.div}>
             <label className={styles.label} htmlFor={id}>
                 {label }:
-                <input type={type || 'text'} id={id} value={value} onChange={onChange} />
+                <input className={styles.input} type={type || 'text'} id={id} value={value} onChange={onChange} />
             </label>
         </div>
     )

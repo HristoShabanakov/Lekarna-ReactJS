@@ -1,3 +1,5 @@
+import {setCookie} from '../utils/cookie';
+
 const authenticate = async(url, body, onSuccess, onFailure) => {
     try {
         const promise = await fetch(url, {
@@ -10,15 +12,10 @@ const authenticate = async(url, body, onSuccess, onFailure) => {
              }
      });
  
-     
-      //const authToken = promise.headers.get('Authorization');
-      //console.log(authToken);
-     //document.cookie = `x-auth-token'=${data}`
  
      const response = await promise.json();
-     const token = document.cookie = `Lekarna-token'=${response}`;
- 
-     console.log(response);
+     const token = response.token;
+     setCookie("LekarnaToken", token);
      
      if (response) {
          onSuccess({

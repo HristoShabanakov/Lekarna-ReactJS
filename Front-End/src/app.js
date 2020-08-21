@@ -16,7 +16,7 @@ const App = (props) => {
     }
 
     const logOut = () => {
-        document.cookie ="Lekarna-token=, expires = Thu, 01 Jan 1970 00:00:00 GMT";
+        document.cookie ="LekarnaToken=, expires = Thu, 01 Jan 1970 00:00:00 GMT";
         setUser({
             loggedIn: false
         })
