@@ -1,10 +1,14 @@
 ﻿namespace LekarnaApi.Features.Identity
 {
     using LekarnaApi.Data.Models;
+    using LekarnaApi.Infrastructure;
     using LekarnaApi.Models.Identity;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
+    using System.Linq;
+    using System.Security.Claims;
     using System.Threading.Tasks;
 
     public class IdentityController : ControllerBase
@@ -24,7 +28,7 @@
         }
         [HttpPost]
         [Route("/identity/register")]
-        public async Task<ActionResult> Register([FromBody]RegisterRequestModel model)
+        public async Task<ActionResult<LoginResponseModel>> Register([FromBody]RegisterRequestModel model)
         {
             var user = new User
             {
@@ -34,12 +38,23 @@
 
             var result = await this.userManager.CreateAsync(user, model.Password);
 
-            if (result.Succeeded)
+            if (!result.Succeeded)
             {
-                return this.Ok();
+                return this.BadRequest(result.Errors);
             }
 
-            return this.BadRequest(result.Errors);
+             var token = this.identityService.GenerateJwtToken(
+                user.Id,
+                user.UserName,
+                this.appSettings.Secret);
+
+            return new LoginResponseModel
+            {
+                Token = token,
+                UserName = user.UserName,
+                Id = user.Id
+            };
+
         }
 
         [HttpPost]
@@ -66,8 +81,23 @@
 
             return new LoginResponseModel
             { 
-                Token = token
+                Token = token,
+                UserName = user.UserName,
+                Id = user.Id
             };
         }
+
+        [HttpGet]
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        [Route("/identity/user")]
+        public async Task<ActionResult<UserDetailsServiceModel>> GetUser()
+        {
+            var userId = this.User.GetId();
+
+            var user = await this.identityService.GetUser(userId);
+
+            return this.Ok(user);
+        }
+
     }
 }
