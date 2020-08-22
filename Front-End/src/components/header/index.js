@@ -4,12 +4,12 @@ import LinkComponent from '../link';
 import styles from './index.module.css';
 import logo from '../../images/lekarna.png'
 import getNavigation from '../../services/navigation';
-import UserContext from '../../Context';
+import {Context} from '../../providers/GlobalContextProvider';
 
 const Header = () =>  {
 
   
-    const context = useContext(UserContext);
+    const context = useContext(Context);
     const user  = context.user;
     const history = useHistory()
     const links = getNavigation(user)
@@ -32,7 +32,7 @@ const Header = () =>  {
                 />)
             })
         }
-        <button onClick={logOut}>Logout</button>
+        {user && user.loggedIn ? <button onClick={logOut}>Logout</button> : null}
          </ul>
         </header>
       )

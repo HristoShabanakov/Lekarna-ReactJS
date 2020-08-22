@@ -4,14 +4,14 @@ import SubmitButton from '../../components/submit-button/submit-button';
 import Title from '../../components/title';
 import Input from '../../components/input';
 import authenticate from '../../services/authenticate';
-import UserContext from '../../Context';
+import {Context} from '../../providers/GlobalContextProvider';
 import {useHistory} from 'react-router-dom';
 
 const RegisterPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
-    const context = useContext(UserContext);
+    const context = useContext(Context);
     const history = useHistory();
 
   const  handleSubmit = async (event) => {

@@ -18,9 +18,10 @@ const authenticate = async(url, body, onSuccess, onFailure) => {
      setCookie("LekarnaToken", token);
      
      if (response) {
+         console.log(response);
          onSuccess({
-             username: response.username,
-             id: response._id
+             userName: response.userName,
+             id: response.id
          });
      } else{
          onFailure();

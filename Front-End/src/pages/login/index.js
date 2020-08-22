@@ -4,14 +4,15 @@ import SubmitButton from '../../components/submit-button/submit-button';
 import Title from '../../components/title';
 import Input from '../../components/input';
 import authenticate from '../../services/authenticate';
-import UserContext from '../../Context';
 import {useHistory} from 'react-router-dom';
+import {Context} from '../../providers/GlobalContextProvider';
 
 const LoginPage = () => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const context = useContext(UserContext);
+    const [error, setError] = useState(false);
+    const context = useContext(Context);
     const history = useHistory();
 
     const handleSubmit = async (event) => {
@@ -21,11 +22,10 @@ const LoginPage = () => {
      username,
      password
     }, (user) => {
-     console.log('Logged In Completed');    
      context.logIn(user);
      history.push('/');
      }, (e) => {
-     console.log('Error', e)
+     setError(true)
     }
     )};
 
@@ -51,6 +51,7 @@ const LoginPage = () => {
         <div>
         <SubmitButton title="Login"/>
         </div>
+        {error ? <div>Invalid User or Password !</div> : null}
     </form>
     </div>
     </content>
