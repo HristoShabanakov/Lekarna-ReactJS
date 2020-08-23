@@ -8,7 +8,8 @@ namespace LekarnaApi
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using LekarnaApi.Infrastructure;
+    using LekarnaApi.Infrastructure.Extensions;
+    using LekarnaApi.Infrastructure.Filters;
 
     public class Startup
     {
@@ -24,7 +25,7 @@ namespace LekarnaApi
                 .AddIdentity()
                 .AddJwtAuthentication(services.GetApplicationSettings(this.Configuration))
                 .AddApplicationServices()
-                .AddControllers();
+                .AddApiControllers();
 
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
