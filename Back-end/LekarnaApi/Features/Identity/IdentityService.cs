@@ -1,6 +1,7 @@
 ﻿namespace LekarnaApi.Features.Identity
 {
     using LekarnaApi.Data;
+    using LekarnaApi.Features.Identity.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.IdentityModel.Tokens;
     using System;

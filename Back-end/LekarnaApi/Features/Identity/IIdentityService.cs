@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using LekarnaApi.Features.Identity.Models;
+using System.Threading.Tasks;
 
 namespace LekarnaApi.Features.Identity
 {

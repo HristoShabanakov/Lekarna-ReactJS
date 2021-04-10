@@ -1,14 +1,13 @@
 ﻿namespace LekarnaApi.Features.Identity
 {
     using LekarnaApi.Data.Models;
-    using LekarnaApi.Infrastructure;
-    using LekarnaApi.Models.Identity;
+    using LekarnaApi.Features.Identity.Models;
+    using LekarnaApi.Infrastructure.Extensions;
+    using LekarnaApi.Models.Identity.Models;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
-    using System.Linq;
-    using System.Security.Claims;
     using System.Threading.Tasks;
 
     public class IdentityController : ControllerBase
