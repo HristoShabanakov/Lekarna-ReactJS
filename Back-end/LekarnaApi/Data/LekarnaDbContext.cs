@@ -17,6 +17,10 @@
         }
         public DbSet<Pharmacy> Pharmacies { get; set; }
 
+        public DbSet<Medicine> Medicines { get; set; }
+
+        public DbSet<Stock> Stocks { get; set; } 
+
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {
             this.ApplyAuditInformation();
@@ -54,6 +58,7 @@
                 .HasForeignKey(c => c.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+               
 
 
             base.OnModelCreating(builder);

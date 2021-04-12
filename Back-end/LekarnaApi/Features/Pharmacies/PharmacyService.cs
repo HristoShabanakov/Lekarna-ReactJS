@@ -73,7 +73,7 @@
         }
 
         public async Task<PharmacyDetailsModel> Details(int id)
-       =>  this.data.Pharmacies.Where(x => x.Id == id)
+       =>  await this.data.Pharmacies.Where(x => x.Id == id)
             .Select(x => new PharmacyDetailsModel
             {
                 Id = x.Id,
@@ -84,7 +84,7 @@
                 ImageUrl = x.ImageUrl,
                 UserName = x.User.UserName
             })
-            .FirstOrDefault();
+            .FirstOrDefaultAsync();
 
         public async Task<bool> Update(int id, string name, string address, string city, string country, string imageUrl, string userId)
         {

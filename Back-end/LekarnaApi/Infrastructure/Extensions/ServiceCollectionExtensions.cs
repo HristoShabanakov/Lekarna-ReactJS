@@ -3,6 +3,7 @@
     using LekarnaApi.Data;
     using LekarnaApi.Data.Models;
     using LekarnaApi.Features.Identity;
+    using LekarnaApi.Features.Medicines;
     using LekarnaApi.Features.Pharmacies;
     using LekarnaApi.Infrastructure.Filters;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -79,7 +80,8 @@
 
           => services
              .AddTransient<IIdentityService, IdentityService>()
-             .AddTransient<IPharmacyService, PharmacyService>();
+             .AddTransient<IPharmacyService, PharmacyService>()
+             .AddTransient<IMedicineService, MedicineService>();
 
         public static void AddApiControllers(this IServiceCollection services)
             => services
