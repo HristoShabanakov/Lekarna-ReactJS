@@ -1,9 +1,10 @@
 ﻿namespace LekarnaApi.Data.Models
 {
+    using LekarnaApi.Data.Models.Base;
     using System.ComponentModel.DataAnnotations;
 
     using static Validation.PharmacyValidations;
-    public class Pharmacy
+    public class Pharmacy : DeletableEntity
     {
         public int Id { get; set; }
 

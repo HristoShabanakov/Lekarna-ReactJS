@@ -8,7 +8,7 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-
+    using static Infrastructure.WebConstants;
     [Authorize]
     public class PharmacyController : ApiController
     {
@@ -18,7 +18,6 @@
         {
             this.pharmacyService = pharmacyService;
         }
-
 
         [HttpPost]
         [Route("/pharmacy/create")]
@@ -49,7 +48,6 @@
         [HttpPut]
         public async Task<ActionResult> Update(UpdatePharmacyRequestModel model)
         {
-            var userId = this.User.GetId();
 
             var updated = await this.pharmacyService.Update(
                 model.Id,
@@ -57,10 +55,25 @@
                 model.Address,
                 model.City,
                 model.Country,
-                model.ImageUrl,
-                userId);
+                model.ImageUrl
+                );
 
             if (!updated)
+            {
+                return BadRequest();
+            }
+            return Ok();
+        }
+
+        [HttpDelete]
+        [Route(Id)]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var userId = this.User.GetId();
+
+            var deleted = await this.pharmacyService.Delete(id, userId);
+
+            if (!deleted)
             {
                 return BadRequest();
             }

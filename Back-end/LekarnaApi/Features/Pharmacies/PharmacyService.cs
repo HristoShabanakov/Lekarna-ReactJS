@@ -23,7 +23,11 @@
             .Select(x => new PharmacyListingModel
             {
                 Id = x.Id,
-                ImageUrl = x.ImageUrl
+                Name = x.Name,
+                Address = x.Address,
+                Country = x.Country,
+                City = x.City,
+                ImageUrl = x.ImageUrl,
             })
             .ToListAsync();
 
@@ -46,19 +50,27 @@
             return pharmacy.Id;
         }
 
-        public async Task<int> Update(string name, string address, string country, string city, string imageUrl, string userId)
+        public async Task<bool> Update(int id, string name, string address, string city, string country,  string imageUrl)
         {
-            var pharmacy = await this.ByUser(userId);
+            var pharmacy = await this.data.Pharmacies.Where(x => x.Id == id).FirstOrDefaultAsync();
 
-            if (pharmacy == null)
+            if (pharmacy != null)
             {
-                Console.WriteLine("Error");
+                pharmacy.Name = name;
+                pharmacy.Address = address;
+                pharmacy.Country = country;
+                pharmacy.City = city;
+                pharmacy.ImageUrl = imageUrl;
+
+                this.data.Update(pharmacy);
+
+                await this.data.SaveChangesAsync();
+
+                return true;
             }
 
-            return 1;
-
+            return false;
         }
-
 
         public async Task<PharmacyDetailsModel> Details(int id)
        =>  this.data.Pharmacies.Where(x => x.Id == id)
@@ -91,6 +103,23 @@
             pharmacy.Country = country;
             pharmacy.ImageUrl = imageUrl;
 
+            await this.data.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> Delete(int id, string userId)
+        {
+            var pharmacy = this.data.Pharmacies
+                .Where(x => x.Id == id && x.UserId == userId)
+                .FirstOrDefault();
+
+            if (pharmacy == null)
+            {
+                return false;
+            }
+
+            this.data.Pharmacies.Remove(pharmacy);
             await this.data.SaveChangesAsync();
 
             return true;

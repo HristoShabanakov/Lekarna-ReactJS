@@ -78,6 +78,7 @@
                 user.UserName,
                 this.appSettings.Secret);
 
+
             return new LoginResponseModel
             { 
                 Token = token,
