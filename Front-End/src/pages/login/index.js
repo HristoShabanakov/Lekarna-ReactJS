@@ -1,6 +1,6 @@
 import React, { useState, useContext} from 'react';
 import styles from './index.module.css';
-import SubmitButton from '../../components/submit-button/submit-button';
+import Button from '../../components/submit-button/submit-button';
 import Title from '../../components/title';
 import Input from '../../components/input';
 import authenticate from '../../services/authenticate';
@@ -31,7 +31,7 @@ const LoginPage = () => {
 
 
     return (
-        <content className={styles.content}>
+        <div className={styles.content}>
          <div className ={styles.div}>
         <form className={styles.container} onSubmit={handleSubmit}>
         <Title title="Login Page" />
@@ -49,12 +49,12 @@ const LoginPage = () => {
         id="password"
         />
         <div>
-        <SubmitButton title="Login"/>
+        <Button type='submit' title="Login"/>
         </div>
         {error ? <div>Invalid User or Password !</div> : null}
     </form>
     </div>
-    </content>
+    </div>
     )
 }
 

@@ -8,12 +8,12 @@ const getNavigation = (user) => {
       link: "/"
      },
      {
-        title: "Offers",
-        link: "/offers"
+        title: "Stock Control",
+        link: "/stock"
        },
        {
-        title: "Pharmacies",
-        link: "/pharmacies"
+        title: "My Pharmacy",
+        link: "/pharmacy"
        },
     ]
 

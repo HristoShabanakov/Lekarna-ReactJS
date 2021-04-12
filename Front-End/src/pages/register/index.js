@@ -1,6 +1,6 @@
 import React, { useState, useContext} from 'react';
 import styles from './index.module.css';
-import SubmitButton from '../../components/submit-button/submit-button';
+import Button from '../../components/submit-button/submit-button';
 import Title from '../../components/title';
 import Input from '../../components/input';
 import authenticate from '../../services/authenticate';
@@ -23,7 +23,7 @@ const RegisterPage = () => {
                password
            }, (user) => {
                context.logIn(user);
-               history.push('/');
+               history.push('/pharmacy');
            }, (e) => {
                console.log('Error', e)
            });
@@ -53,7 +53,7 @@ return (
    id="password"
    />
    <div className={styles.buttonDiv}>
-   <SubmitButton title="Login"/>
+   <Button type='submit' title="Login"/>
    </div>
 </form>
 </div>

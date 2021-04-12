@@ -12,13 +12,15 @@ export const Context = createContext(initialState);
 
 const GlobalContextProvider = ({children}) => {
     const [ user, setUser ] = useState(null);
-
+    const [ hasPharmacy, setHasPharmacy ] = useState(false);
     const logIn = (userObject) => {
         setUser({
             ...userObject,
             loggedIn: true
         });
+        
     }
+
 
     const logOut = () => {
         document.cookie ="LekarnaToken=, expires = Thu, 01 Jan 1970 00:00:00 GMT";
@@ -57,7 +59,7 @@ const GlobalContextProvider = ({children}) => {
         value={{
             user,
             logIn,
-            logOut
+            logOut,
         }}>
             {children}
         </Context.Provider>)
