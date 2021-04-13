@@ -7,6 +7,7 @@ import Footer from './components/footer';
 import RegisterPage from './pages/register';
 import LoginPage from './pages/login';
 import PharmacyPage from './pages/pharmacies';
+import DashboardPage from './pages/dashboard';
 import ErrorPage from './pages/error';
 import Main from './components/main';
 
@@ -19,6 +20,7 @@ return (
         <Switch>
         <Route path="/" exact component={HomePage}/>
         <Route path="/stock" component={StockPage}/>
+        <Route path="/dashboard" component={DashboardPage}/>
         <Route path="/pharmacy" component={PharmacyPage}/>
         <Route path="/register" component ={RegisterPage}/>
         <Route path="/login" component ={LoginPage}/>

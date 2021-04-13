@@ -12,6 +12,10 @@ const getNavigation = (user) => {
         link: "/stock"
        },
        {
+         title: "Dashboard",
+         link: "/dashboard"
+        },
+       {
         title: "My Pharmacy",
         link: "/pharmacy"
        },
