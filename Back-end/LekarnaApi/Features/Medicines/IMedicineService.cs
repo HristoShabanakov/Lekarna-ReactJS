@@ -1,15 +1,17 @@
 ﻿namespace LekarnaApi.Features.Medicines
 {
     using LekarnaApi.Features.Medicines.Models;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     public interface IMedicineService
     {
-        Task<int> Create(string name, decimal price, int quantity, int pharmacyId);
+        Task<string> Create(string name, string price, string quantity, string userId);
 
-        Task<MedicineDetailsModel> Details(int id);
+        Task<MedicineDetailsModel> Details(string id);
 
-        Task<bool> Update(int id, string name, decimal price, int quantity, int pharmacyId);
+        Task<IEnumerable<MedicineListingModel>> GetAll(string pharmacyId);
+        Task<bool> Update(string id, string name, string price, string quantity);
 
-        Task<bool> Delete(int id, string userId);
+        Task<bool> Delete(string id, string userId);
     }
 }

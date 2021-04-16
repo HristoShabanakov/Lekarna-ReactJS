@@ -4,17 +4,14 @@
     using System.ComponentModel.DataAnnotations.Schema;
     public class UpdateMedicineRequestModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
+        
+        public string Price { get; set; }
 
-        [Column(TypeName = "decimal(5,2)")]
-        public decimal Price { get; set; }
-
-        public int Quantity { get; set; }
-
-        public int PharmacyId { get; set; }
+        public string Quantity { get; set; }
     }
 }

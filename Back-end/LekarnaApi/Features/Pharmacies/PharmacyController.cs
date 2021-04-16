@@ -32,7 +32,7 @@
 
         [HttpGet]
         [Route("/pharmacy/id")]
-        public async Task<ActionResult<PharmacyDetailsModel>> Details(int id)
+        public async Task<ActionResult<PharmacyDetailsModel>> Details(string id)
 
              => await this.pharmacyService.Details(id);
 
@@ -67,7 +67,7 @@
 
         [HttpDelete]
         [Route(Id)]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult> Delete(string id)
         {
             var userId = this.User.GetId();
 

@@ -5,7 +5,7 @@
     using static Data.Validation.PharmacyValidations;
     public class UpdatePharmacyRequestModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [Requred]
         [MaxLength(MaxNameLength)]

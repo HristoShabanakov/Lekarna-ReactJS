@@ -1,12 +1,17 @@
 ﻿namespace LekarnaApi.Data.Models
 {
     using LekarnaApi.Data.Models.Base;
+    using System;
     using System.ComponentModel.DataAnnotations;
 
     using static Validation.PharmacyValidations;
     public class Pharmacy : DeletableEntity
     {
-        public int Id { get; set; }
+        public Pharmacy()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+        public string Id { get; set; }
 
         [Requred]
         [MaxLength(MaxNameLength)]
@@ -27,5 +32,6 @@
         public string UserId { get; set; }
 
         public User User { get; set; }
+        
     }
 }

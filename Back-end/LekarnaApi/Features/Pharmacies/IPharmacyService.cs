@@ -8,14 +8,14 @@ namespace LekarnaApi.Features.Pharmacies
 
     public interface IPharmacyService
     {
-        Task<int> Create(string name, string address, string country, string city, string imageUrl, string userId);
+        Task<string> Create(string name, string address, string country, string city, string imageUrl, string userId);
 
-        Task<IEnumerable<PharmacyListingModel>> ByUser(string userId);
+        Task<IList<PharmacyListingModel>> ByUser(string userId);
 
-        Task<PharmacyDetailsModel> Details(int id);
+        Task<PharmacyDetailsModel> Details(string id);
 
-        Task<bool> Update(int id, string name, string address, string city, string country, string imageUrl);
+        Task<bool> Update(string id, string name, string address, string city, string country, string imageUrl);
 
-        Task<bool> Delete(int id, string userId);
+        Task<bool> Delete(string id, string userId);
     }
 }

@@ -18,12 +18,12 @@
             this.data = data;
         }
 
-        public async Task<IEnumerable<PharmacyListingModel>> ByUser(string userId)
+        public async Task<IList<PharmacyListingModel>> ByUser(string userId)
         => await this.data.Pharmacies.Where(c => c.UserId == userId)
             .Select(x => new PharmacyListingModel
             {
                 Id = x.Id,
-                Name = x.Name,
+                Name = x.Name, 
                 Address = x.Address,
                 Country = x.Country,
                 City = x.City,
@@ -31,7 +31,7 @@
             })
             .ToListAsync();
 
-        public async Task<int> Create(string name, string address, string country, string city, string imageUrl, string userId)
+        public async Task<string> Create(string name, string address, string country, string city, string imageUrl, string userId)
         {
             var pharmacy = new Pharmacy
             {
@@ -43,14 +43,14 @@
                 UserId = userId,
             };
 
-            this.data.Add(pharmacy);
+            this.data.Pharmacies.Add(pharmacy);
 
-            await this.data.SaveChangesAsync();
-
+            var x = await this.data.SaveChangesAsync();
+            
             return pharmacy.Id;
         }
 
-        public async Task<bool> Update(int id, string name, string address, string city, string country,  string imageUrl)
+        public async Task<bool> Update(string id, string name, string address, string city, string country,  string imageUrl)
         {
             var pharmacy = await this.data.Pharmacies.Where(x => x.Id == id).FirstOrDefaultAsync();
 
@@ -72,7 +72,7 @@
             return false;
         }
 
-        public async Task<PharmacyDetailsModel> Details(int id)
+        public async Task<PharmacyDetailsModel> Details(string id)
        =>  await this.data.Pharmacies.Where(x => x.Id == id)
             .Select(x => new PharmacyDetailsModel
             {
@@ -86,7 +86,7 @@
             })
             .FirstOrDefaultAsync();
 
-        public async Task<bool> Update(int id, string name, string address, string city, string country, string imageUrl, string userId)
+        public async Task<bool> Update(string id, string name, string address, string city, string country, string imageUrl, string userId)
         {
             var pharmacy = this.data.Pharmacies
                 .Where(x => x.Id == id && x.UserId == userId)
@@ -108,7 +108,7 @@
             return true;
         }
 
-        public async Task<bool> Delete(int id, string userId)
+        public async Task<bool> Delete(string id, string userId)
         {
             var pharmacy = this.data.Pharmacies
                 .Where(x => x.Id == id && x.UserId == userId)

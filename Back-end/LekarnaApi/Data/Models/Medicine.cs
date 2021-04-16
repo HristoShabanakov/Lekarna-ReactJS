@@ -9,18 +9,22 @@
     using System.Threading.Tasks;
     public class Medicine : DeletableEntity
     {
-        public int Id { get; set; }
+        public Medicine()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+
+        public string Id { get; set; }
 
         [Required]
         [MaxLength(50)]
         public string Name { get; set; }
 
-        [Column(TypeName = "decimal(5,2)")]
-        public decimal Price { get; set; }
+        public string Price { get; set; }
 
-        public int Quantity { get; set; }
+        public string Quantity { get; set; }
 
-        public int PharmacyId { get; set; }
+        public string PharmacyId { get; set; }
 
         public Pharmacy Pharmacy { get; set; }
     }

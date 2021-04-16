@@ -2,7 +2,7 @@
 {
     public class PharmacyListingModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Country { get; set; }
 
