@@ -42,7 +42,7 @@
         }
 
         [HttpGet]
-        [Route("/medicine/id")]
+        [Route("/medicine/{id}")]
         public async Task<ActionResult<MedicineDetailsModel>> Details(string id)
 
              => await this.medicineService.Details(id);
