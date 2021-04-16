@@ -1,12 +1,12 @@
-import React, { useState, useContext, useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 import Title from '../../components/title';
 import Input from '../../components/input';
 import styles from './index.module.css';
 import Button from '../../components/submit-button/submit-button';
 import {useHistory} from 'react-router-dom';
 import {createPharmacy, getDetails,editPharmacy } from '../../services/pharmacies';
-import {setCookie, getCookie } from '../../utils/cookie';
-import {Context} from '../../providers/GlobalContextProvider';
+import {getCookie} from '../../utils/cookie';
+
 
 const PharmacyPage = () => {
   const [id, setId] = useState(null);
@@ -23,9 +23,9 @@ const PharmacyPage = () => {
 },[])
       const getPharmacy = async () => {
         const token = getCookie('LekarnaToken');
-        var res= await getDetails(token)
+        var res = await getDetails(token)
         console.log(res)
-        if(res !==null){
+        if(res !== null){
           setHasPharmacy(true)
           setAddress(res.address)
           setCountry(res.country)

@@ -18,7 +18,7 @@ const StockPage = () => {
     const result = await createMedicine({ name, price, quantity}, token);
     console.log(result)
     if (result) {
-      history.push('/');
+      history.push('/dashboard');
     }
   };
 

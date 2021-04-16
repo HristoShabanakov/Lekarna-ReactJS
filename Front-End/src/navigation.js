@@ -10,7 +10,7 @@ import PharmacyPage from './pages/pharmacies';
 import DashboardPage from './pages/dashboard';
 import ErrorPage from './pages/error';
 import Main from './components/main';
-
+import EditPage from './pages/editPage';
 const Navigation = () => {
 return (
     <Fragment>
@@ -19,7 +19,8 @@ return (
     <Main>
         <Switch>
         <Route path="/" exact component={HomePage}/>
-        <Route path="/stock" component={StockPage}/>
+        <Route path="/medicine/add" component={StockPage}/>
+        <Route path="/edit/:id" component={EditPage}/>
         <Route path="/dashboard" component={DashboardPage}/>
         <Route path="/pharmacy" component={PharmacyPage}/>
         <Route path="/register" component ={RegisterPage}/>

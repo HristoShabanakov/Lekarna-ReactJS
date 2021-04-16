@@ -8,8 +8,8 @@ const getNavigation = (user) => {
       link: "/"
      },
      {
-        title: "Stock Control",
-        link: "/stock"
+        title: "Add Medicine",
+        link: "/medicine/add"
        },
        {
          title: "Dashboard",
@@ -19,6 +19,10 @@ const getNavigation = (user) => {
         title: "My Pharmacy",
         link: "/pharmacy"
        },
+       {
+         title: "Edit medicine",
+         link: "/edit/:id"
+        },
     ]
 
     const guestLinks = [
