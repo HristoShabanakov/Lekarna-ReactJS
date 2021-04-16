@@ -19,10 +19,6 @@ const getNavigation = (user) => {
         title: "My Pharmacy",
         link: "/pharmacy"
        },
-       {
-         title: "Edit medicine",
-         link: "/edit/:id"
-        },
     ]
 
     const guestLinks = [

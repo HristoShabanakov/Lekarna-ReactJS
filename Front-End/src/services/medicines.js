@@ -36,13 +36,34 @@ export const getMedicines = async (token) => {
 	}
 };
 
-export const deleteMedicine = async (token, data) => {
+
+export const getDetails = async (token, id) => {
 	const headers = getHeaders(token);
 
 	try {
-		await fetcher(API_URL, 'DELETE', headers, data);
+		const response = await fetcher(API_URL + `/${id}` , 'GET', headers);
+	
+		const dataToReturn = await response.json();
+		if (response.status === 400) {
+			return { error: dataToReturn };
+		}
+		return dataToReturn;
 	} catch (error) {
 		console.log(error);
 		return error;
 	}
+};
+
+export const editMedicine = async (data, token) => {
+	const headers = getHeaders(token);
+	const response = await fetcher(API_URL + `/${data.id}`,'PUT', headers, data);
+	
+	return response.status===200
+};
+
+export const deleteMedicine = async (token, id) => {
+	const headers = getHeaders(token);
+	const response = await fetcher(API_URL + `/${id}`,'DELETE', headers);
+	
+	return response.status===200
 };
